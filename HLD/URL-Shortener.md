@@ -1,4 +1,4 @@
-# system-design-lld-hld-complete-resources
+# URL Shortener
 
 ```text
 START
@@ -64,5 +64,7 @@ START
 END
 ```
 
+# HLD of URL Shortener
+<img width="721" height="423" alt="Screenshot 2026-04-23 at 10 34 20 AM" src="https://github.com/user-attachments/assets/0803d827-5944-4b44-83ce-4016e9d82c1e" />
 
 
