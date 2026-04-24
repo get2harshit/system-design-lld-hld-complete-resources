@@ -1,15 +1,84 @@
-# URL Shortener
-
-
 # Design a simple URL Shortener
+
+### Core Answer
+
+“In a URL shortener, the client sends a long URL to the server.
+The server generates a unique short key, stores the mapping of short URL to long URL in a database, and returns the shortened URL to the client.
+
+When a user accesses the short URL, the server looks up the original URL using the key and redirects the user.
+To improve performance, frequently accessed URLs are cached.”
+
+
+## Follow-up Questions (Integrated Answers)
+
+
+### 1. In this system, what is the client and what is the server?
 
 **Answer:**
 
-“In a URL shortener, we take a long URL and generate a unique short key for it.
-This mapping is stored in a database.
-When a user hits the short URL, the system looks up the original URL using the key and redirects the user.
-To improve performance, frequently accessed URLs can be cached.”
+“The client is typically a browser or mobile app that sends requests to shorten or access URLs.
+The server is the backend service that generates short URLs, stores mappings, and handles redirection.”
 
+---
+
+
+### 2. SQL or NoSQL — which database is more suitable?
+
+**Answer:**
+
+“NoSQL is generally more suitable because:
+
+* The data model is simple key-value (short → long URL)
+* We need high scalability and high read throughput
+* Schema flexibility is not critical here
+
+However, SQL can also be used if strong consistency or relational features are required.”
+
+---
+
+### 3. Where should caching be used and what should be cached?
+
+**Answer:**
+
+“Caching should be used in the read path, especially during redirection.
+Frequently accessed short URLs should be cached in a fast in-memory store like Redis.
+
+This avoids repeated database lookups and significantly reduces latency.”
+
+---
+
+### 4. Which operations should use a queue?
+
+**Answer:**
+
+“Operations that are not critical to immediate response should be handled asynchronously using a queue. For example:
+
+* Analytics (click tracking)
+* Logging
+* Expiration cleanup
+* Spam detection
+
+These can be processed in the background without blocking the user request.”
+
+---
+
+### 5. How do traffic and latency constraints influence design?
+
+**Answer:**
+
+“URL shorteners are read-heavy systems with very high redirection traffic.
+So the design must prioritize low latency and high availability.
+
+To handle this:
+
+* Use caching for fast lookups
+* Use horizontally scalable databases
+* Use load balancers to distribute traffic
+* Keep redirection logic lightweight
+
+Even small latency increases can impact user experience since redirects happen in real-time.”
+
+---
 
 
 
