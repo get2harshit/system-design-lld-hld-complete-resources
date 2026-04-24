@@ -1,5 +1,18 @@
 # URL Shortener
 
+
+# 10. Design a simple URL Shortener
+
+**Answer:**
+
+“In a URL shortener, we take a long URL and generate a unique short key for it.
+This mapping is stored in a database.
+When a user hits the short URL, the system looks up the original URL using the key and redirects the user.
+To improve performance, frequently accessed URLs can be cached.”
+
+
+
+
 ```text
 START
 │
