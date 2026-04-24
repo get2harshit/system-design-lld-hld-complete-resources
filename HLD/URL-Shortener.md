@@ -1,7 +1,7 @@
 # URL Shortener
 
 
-# 10. Design a simple URL Shortener
+# Design a simple URL Shortener
 
 **Answer:**
 
